@@ -1,3 +1,5 @@
+import Card from "./Card.mjs";
+
 export default class Player{
     /**
      * 
@@ -7,7 +9,7 @@ export default class Player{
     constructor(name, chips){
         this.name = name;
         this.chips = chips;
-        
+        this.cards = [];
     }
 
     /**
@@ -30,6 +32,20 @@ export default class Player{
     add(amount){
         this.chips += amount;
     }
+    /**
+     * Updates the player's hand to the new cards passed in
+     * @param {Card} card1
+     * @param {Card} card2 
+     */
+    updateCards(card1, card2){
+        this.cards = [card1, card2];
+    }
+    /**
+     * Clears the player's hand of any cards
+     */
+    clearCards(){
+        this.cards = [];
+    }
 
     /**
      * Returns the name of the player
@@ -40,10 +56,17 @@ export default class Player{
     }
     /**
      * Returns the number of chips the Player has
-     * @returns {String}
+     * @returns {int}
      */
     getChips(){
         return this.chips;
+    }
+    /**
+     * Returns the current cards the player is holding
+     * @returns {Array<Card>}
+     */
+    getCards(){
+        return this.cards;
     }
     
 }
